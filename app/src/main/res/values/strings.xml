@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">SimpleChatApp</string>
+
+
+    <string name="new_message">New Message</string>
+    <string name="search">search</string>
+    <string name="search_view_query_hint">Search by friend</string>
+    <string name="dialog_title_friend_add_chat">Select a friend you want to chat with</string>
+</resources>
