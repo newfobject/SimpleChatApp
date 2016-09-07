@@ -16,26 +16,31 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.Logger;
+import com.google.firebase.database.Query;
+import com.newfobject.simplechatapp.Constants;
 import com.newfobject.simplechatapp.R;
-import com.newfobject.simplechatapp.model.ChatDialog;
-import com.newfobject.simplechatapp.model.RecentMessage;
+import com.newfobject.simplechatapp.ui.activities.DialogActivity;
+import com.newfobject.simplechatapp.ui.activities.ProfileActivity;
 import com.newfobject.simplechatapp.ui.adapters.RecentMessagesAdapter;
+import com.newfobject.simplechatapp.ui.decorations.DividerItemDecoration;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-/**
- * A simple {@link Fragment} subclass.
- */
-public class MessagesFragment extends Fragment {
+
+public class MessagesFragment extends Fragment implements RecentMessagesAdapter.onItemClickListener {
 
 
     @BindView(R.id.messages_recycler_view)
     RecyclerView recyclerView;
+    private RecentMessagesAdapter adapter;
+    private DatabaseReference databaseReference;
+    private boolean defaultAdapter = true;
 
     public static MessagesFragment newInstance() {
         MessagesFragment fragment = new MessagesFragment();
@@ -45,7 +50,6 @@ public class MessagesFragment extends Fragment {
     public MessagesFragment() {
 
     }
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -58,14 +62,21 @@ public class MessagesFragment extends Fragment {
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
-        FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
-        //TODO fix your_uid
-        DatabaseReference databaseReference = firebaseDatabase.getReference("recent_message").child("your_uid");
-        RecentMessagesAdapter adapter = new RecentMessagesAdapter(RecentMessage.class,
-                R.layout.recent_message_adapter_item, databaseReference);
-        recyclerView.setLayoutManager(new LinearLayoutManager(
-                getContext(), LinearLayoutManager.VERTICAL, false));
-        recyclerView.setAdapter(adapter);
+
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        if (user != null) {
+            FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
+            databaseReference = firebaseDatabase.getReference(Constants.RECENT_MESSAGE)
+                    .child(user.getUid());
+            adapter = new RecentMessagesAdapter(databaseReference, this);
+            LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity(),
+                    LinearLayoutManager.VERTICAL, false);
+            recyclerView.setLayoutManager(layoutManager);
+            recyclerView.addItemDecoration(new DividerItemDecoration(getContext(),
+                    LinearLayoutManager.VERTICAL));
+
+            recyclerView.setAdapter(adapter);
+        }
     }
 
     @Override
@@ -93,15 +104,15 @@ public class MessagesFragment extends Fragment {
 
     @OnClick(R.id.addChatFab)
     public void onAddChatClick() {
-        FragmentTransaction ft = getFragmentManager().beginTransaction();
-        Fragment dialogFragment = getFragmentManager().findFragmentByTag("dialog");
-        if (dialogFragment != null) {
-            ft.remove(dialogFragment);
-        }
-        ft.addToBackStack(null);
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        if (user != null) {
 
-        SendFriendsDialogFragment newFragment = SendFriendsDialogFragment.newInstance();
-        newFragment.show(ft, "dialog");
+            SendFriendsDialogFragment friendChatSelectDialog = SendFriendsDialogFragment
+                    .newInstance(user.getUid());
+
+            friendChatSelectDialog.show(getFragmentManager(), "dialog");
+        }
+
     }
 
     private SearchView.OnQueryTextListener createOnQueryTextListener() {
@@ -114,9 +125,43 @@ public class MessagesFragment extends Fragment {
 
             @Override
             public boolean onQueryTextChange(String newText) {
-                //TODO hide recyclerview items if they don't match newtext
+                if (newText.length() > 3) {
+                    newText = newText.toLowerCase();
+                    Query query = databaseReference.orderByChild(Constants.CASE_INSENSITIVE_NAME)
+                            .startAt(newText).endAt(newText + "~")
+                            .limitToFirst(5);
+                    recyclerView.swapAdapter(new RecentMessagesAdapter(query, MessagesFragment.this),
+                            true);
+
+                    defaultAdapter = false;
+                    return true;
+                } else if (!defaultAdapter) {
+                    recyclerView.swapAdapter(adapter, true);
+                    defaultAdapter = true;
+                    return true;
+                }
+
                 return false;
             }
         };
+    }
+
+    @Override
+    public void onAdapterItemClick(String key) {
+        DialogActivity.startActivity(getContext(), key);
+    }
+
+    @Override
+    public void onProfileImageClick(String friendId) {
+        ProfileActivity.startActivity(getContext(), friendId);
+    }
+
+    @Override
+    public void onDetach() {
+        super.onDetach();
+
+        if (adapter != null) {
+            adapter.cleanup();
+        }
     }
 }

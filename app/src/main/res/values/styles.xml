@@ -7,12 +7,29 @@
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
     </style>
-    
+
     <style name="ToolBarTheme" parent="ThemeOverlay.AppCompat.Dark.ActionBar">
 
-        <item name="android:background">@color/colorPrimary</item>
+        <!--<item name="android:background">@color/colorPrimary</item>-->
         <item name="titleTextColor">@color/white</item>
+        <item name="android:colorBackground">?attr/colorPrimary</item>
 
+    </style>
+
+    <style name="NavigationDrawerStyle">
+    </style>
+
+    <style name="SignInStyle" parent="AppTheme">
+        <!--<item name="colorAccent">@color/lightAccent</item>-->
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:textColorHint">@android:color/white</item>
+        <item name="android:textColorPrimary">@android:color/white</item>
+        <item name="android:windowBackground">?attr/colorPrimary</item>
+    </style>
+
+    <style name="ButtonLoginStyle">
+        <item name="android:background">?attr/colorPrimaryDark</item>
+        <item name="android:textColor">@android:color/white</item>
     </style>
 
 

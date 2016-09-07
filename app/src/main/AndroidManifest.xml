@@ -9,13 +9,27 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ui.activities.MainActivity">
+        <activity android:name=".ui.activities.RecentMessagesActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".ui.activities.DialogActivity" />
+        <activity android:name=".ui.activities.ProfileActivity" />
+        <activity
+            android:name=".ui.activities.FriendsListActivity"
+            android:parentActivityName=".ui.activities.RecentMessagesActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".ui.activities.RecentMessagesActivity" />
+        </activity>
+        <activity android:name=".ui.activities.AddFriendActivity" />
+        <activity android:name=".ui.activities.AboutActivity"/>
+        <activity
+            android:name=".ui.activities.LoginActivity"
+            android:theme="@style/SignInStyle" />
     </application>
 
 </manifest>

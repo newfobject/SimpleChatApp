@@ -1,0 +1,107 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    tools:context="com.newfobject.simplechatapp.ui.fragments.ProfileFragment">
+
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/profile_card_margin"
+        android:layout_marginRight="@dimen/profile_card_margin">
+
+        <android.support.v7.widget.GridLayout
+            android:id="@+id/profile_card"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_gravity="center"
+            android:minHeight="@dimen/profile_grid_min_height"
+            android:visibility="invisible"
+            app:columnCount="2"
+            app:orientation="horizontal"
+            tools:visibility="visible">
+
+            <ImageView
+                android:id="@+id/profile_image"
+                android:layout_width="@dimen/profile_image_width_height"
+                android:layout_height="@dimen/profile_image_width_height"
+                android:adjustViewBounds="true"
+                android:contentDescription="@string/profile_image_description"
+                android:src="@drawable/user"
+                app:layout_columnWeight="1"
+                app:layout_gravity="center" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:measureWithLargestChild="true"
+                android:orientation="vertical"
+                app:layout_columnWeight="1"
+                app:layout_gravity="center">
+
+                <TextView
+                    android:id="@+id/user_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:minWidth="@dimen/profile_text_min_width"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    app:layout_columnWeight="1"
+                    app:layout_gravity="center"
+                    tools:text="User name" />
+
+                <TextView
+                    android:id="@+id/is_online"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:minWidth="@dimen/profile_text_min_width"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    app:layout_columnWeight="1"
+                    app:layout_gravity="center_horizontal"
+                    tools:text="isOnline" />
+
+                <TextView
+                    android:id="@+id/user_email"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:minWidth="@dimen/profile_text_min_width"
+                    app:layout_columnWeight="1"
+                    app:layout_gravity="center_horizontal"
+                    tools:text="mail@mail.dd" />
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/send_message_button"
+                style="@style/Widget.AppCompat.Button.Borderless.Colored"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/send_a_message"
+                app:layout_gravity="center_horizontal" />
+
+            <Button
+                android:id="@+id/add_friends_button"
+                style="@style/Widget.AppCompat.Button.Borderless.Colored"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/add_friend"
+                app:layout_gravity="center_horizontal" />
+
+        </android.support.v7.widget.GridLayout>
+
+        <ProgressBar
+            android:id="@+id/profile_load_progress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center" />
+
+    </android.support.v7.widget.CardView>
+
+
+</RelativeLayout>

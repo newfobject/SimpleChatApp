@@ -4,4 +4,19 @@
     <dimen name="activity_vertical_margin">16dp</dimen>
     <dimen name="appbar_elevation">4dp</dimen>
     <dimen name="fab_margin">16dp</dimen>
+    <dimen name="send_button_margin">16dp</dimen>
+    <dimen name="chat_edit_text_margin">16dp</dimen>
+
+    <dimen name="list_item_height">72dp</dimen>
+    <dimen name="profile_image_size">40dp</dimen>
+    <dimen name="content_spacing">8dp</dimen>
+
+    <dimen name="rcv_item_margin">16dp</dimen>
+
+    <dimen name="profile_card_margin">@dimen/activity_horizontal_margin</dimen>
+    <dimen name="navigation_header_height">160dp</dimen>
+    <dimen name="profile_grid_min_height">200dp</dimen>
+    <dimen name="profile_image_width_height">90dp</dimen>
+    <dimen name="profile_text_min_width">100dp</dimen>
+    <!--<dimen name="chat_edit_text_max_height">60dp</dimen>-->
 </resources>

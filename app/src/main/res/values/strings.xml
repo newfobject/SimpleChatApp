@@ -1,9 +1,82 @@
 <resources>
     <string name="app_name">SimpleChatApp</string>
 
+    <!--Titles-->
+    <string name="recent_messages_title">Recent Messages</string>
+    <string name="profile_title">username profile</string>
+    <string name="chat_dialog_title">friend name</string>
+    <string name="add_friend_activity_title">Add a Friend</string>
+    <string name="about_activity_title">About</string>
+    <string name="dialog_add_chat_title">Select a friend you want to chat with</string>
+    <string name="my_profile_title">My Profile</string>
+    <string name="friends_list_title">Friends List</string>
+    <string name="select_a_friend_title">Select a Friend</string>
 
-    <string name="new_message">New Message</string>
-    <string name="search">search</string>
+    <!--Navigation drawer items-->
+    <string name="friends_list">Friends List</string>
+    <string name="recent_messages">Recent Messages</string>
+    <string name="about">About</string>
+
+    <!--Login-->
+    <string name="no_account_yet_create_one">No account yet? Create one</string>
+    <string name="or">or</string>
+
+    <!--Errors-->
+    <string name="password_short_error">Password should be at least 5 characters</string>
+    <string name="name_at_least_one_letter_error">Name should contain at least one letter</string>
+    <string name="name_only_lettes_numbers_error">Name should only letters and numbers</string>
+    <string name="email_field_is_not_valid">Email is not valid</string>
+    <string name="name_is_too_short">Name is too short: it should be at least 3 symbols</string>
+
+    <!--Alerts-->
+    <string name="sign_out_alert">Sign out?</string>
+    <string name="alert_dialog_ok">OK</string>
+    <string name="alert_dialog_cancel">Cancel</string>
+
+    <!--Status-->
+    <string name="online">Online</string>
+    <string name="offline">Offline</string>
+
+    <!--Toasts-->
+    <string name="friend_was_added_toast">%1$s was added to your friend list</string>
+    <string name="all_messages_was_deleted">All messages was deleted</string>
+    <string name="click_back_again_to_exit">Please click BACK again to exit</string>
+    <string name="sign_in_failed">"Sign In Failed"</string>
+    <string name="auth_failed">Authentication failed</string>
+    <string name="google_play_services_error">Google Play Services error</string>
+    <string name="account_created">"Account created"</string>
+    <string name="account_creation_failed">"Account creation failed: "</string>
+
+    <!--Hints-->
     <string name="search_view_query_hint">Search by friend</string>
-    <string name="dialog_title_friend_add_chat">Select a friend you want to chat with</string>
+    <string name="write_your_friend_mail_hint">Search friend by email…</string>
+    <string name="user_name_hint">User name</string>
+    <string name="user_email_hint">Email</string>
+    <string name="send_a_message_hint">Send a message</string>
+
+
+    <!--Buttons-->
+    <string name="send_a_message">SEND A MESSAGE</string>
+    <string name="you_are_friends">You are friends</string>
+    <string name="add_friend">Add a Friend</string>
+    <string name="sign_in">sign in</string>
+    <string name="create_account">create account</string>
+
+    <!--Menus-->
+    <string name="search">search</string>
+    <string name="delete_from_friend_list">Delete from friend list</string>
+    <string name="delete_all_messages">Delete all messages</string>
+
+    <!--Links-->
+    <string name="short_github_link" translatable="false">https://goo.gl/BI5TDg</string>
+
+    <!--About-->
+    <string name="about_app">This is a simple example of app using the firebase services</string>
+
+    <!--Content Descriptions-->
+    <string name="profile_image_description">Profile Image</string>
+    <string name="send_the_message_description">Send the message</string>
+
+    <!--<string name="new_message">New Message</string>-->
+
 </resources>
