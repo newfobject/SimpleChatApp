@@ -19,15 +19,12 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:foregroundGravity="bottom"
-        android:paddingLeft="@dimen/chat_edit_text_margin"
-        android:paddingRight="0dp"
-        android:paddingTop="@dimen/chat_edit_text_margin"
-        android:paddingBottom="@dimen/chat_edit_text_margin">
+        android:padding="@dimen/chat_edit_text_margin">
 
         <EditText
             android:id="@+id/new_message_edittext"
             android:layout_width="0dp"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:focusable="true"
             android:inputType="textCapSentences|textAutoCorrect|textMultiLine"
             android:layout_weight="1"
@@ -38,14 +35,11 @@
             android:hint="@string/send_a_message_hint" />
 
         <ImageButton
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
+            android:layout_width="@dimen/send_button_size"
+            android:layout_height="@dimen/send_button_size"
             android:id="@+id/send_message_button"
             android:src="@drawable/ic_send_white_24dp"
             android:background="@null"
-            android:adjustViewBounds="false"
-            android:foregroundGravity="bottom"
-            android:padding="@dimen/send_button_margin"
             android:contentDescription="@string/send_the_message_description" />
     </LinearLayout>
 

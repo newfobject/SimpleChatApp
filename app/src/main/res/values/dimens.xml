@@ -9,6 +9,7 @@
 
     <dimen name="list_item_height">72dp</dimen>
     <dimen name="profile_image_size">40dp</dimen>
+    <dimen name="send_button_size">40dp</dimen>
     <dimen name="content_spacing">8dp</dimen>
 
     <dimen name="rcv_item_margin">16dp</dimen>
