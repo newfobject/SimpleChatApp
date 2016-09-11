@@ -1,7 +1,6 @@
 package com.newfobject.simplechatapp;
 
 public class Constants {
-    public static final String FIREBASE_ROOT_URL = BuildConfig.FIREBASE_ROOT_URL;
 
     public static final String DIALOGS = "dialogs";
     public static final String RECENT_MESSAGE = "recent_message";
@@ -34,5 +33,6 @@ public class Constants {
      */
     public static final String IS_YOUR = "your";
 
+    // used to make a search by user name
     public static final String CASE_INSENSITIVE_NAME = "index_name";
 }

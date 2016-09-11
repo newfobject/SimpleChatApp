@@ -21,9 +21,7 @@ android {
 
     buildTypes.each {
 
-        // put firebase url in gradle.properties file
-        // example: FirebaseRootUrl="https://your_firebase_url"
-        it.buildConfigField 'String', 'FIREBASE_ROOT_URL', FirebaseRootUrl
+
     }
 }
 
