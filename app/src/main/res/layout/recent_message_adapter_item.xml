@@ -24,7 +24,8 @@
         android:layout_marginLeft="@dimen/rcv_item_margin"
         android:layout_weight="1"
         android:gravity="center"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:layout_marginRight="@dimen/rcv_item_margin">
 
         <TextView
             android:id="@+id/friend_name"

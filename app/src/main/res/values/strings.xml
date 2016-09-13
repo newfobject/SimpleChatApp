@@ -76,6 +76,7 @@
     <!--Content Descriptions-->
     <string name="profile_image_description">Profile Image</string>
     <string name="send_the_message_description">Send the message</string>
+    <string name="profile_background">profile background</string>
 
     <!--<string name="new_message">New Message</string>-->
 

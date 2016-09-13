@@ -26,7 +26,8 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="@dimen/rcv_item_margin"
         android:layout_weight="1"
-        tools:text="Friend Name" />
+        tools:text="Friend Name"
+        android:textAppearance="@style/Base.TextAppearance.AppCompat.Subhead" />
 
 
 </LinearLayout>

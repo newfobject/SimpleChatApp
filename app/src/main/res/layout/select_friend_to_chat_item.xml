@@ -21,9 +21,9 @@
         android:id="@+id/friend_name"
         tools:text="Alexandr Pushkin"
         android:layout_weight="3"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
         android:gravity="center_vertical"
-        android:layout_marginLeft="@dimen/rcv_item_margin" />
+        android:layout_marginLeft="@dimen/rcv_item_margin"
+        android:textAppearance="@style/Base.TextAppearance.AppCompat.Subhead" />
 
 
 </LinearLayout>

@@ -1,19 +1,18 @@
 package com.newfobject.simplechatapp.ui.fragments;
 
 
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v7.widget.GridLayout;
-import android.util.Log;
+import android.support.v7.widget.CardView;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
@@ -38,6 +37,7 @@ import com.newfobject.simplechatapp.ui.activities.ProfileActivity;
 import java.util.HashMap;
 import java.util.Map;
 
+import butterknife.BindInt;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
@@ -60,9 +60,11 @@ public class ProfileFragment extends Fragment {
     @BindView(R.id.profile_load_progress)
     ProgressBar profileProgressBar;
     @BindView(R.id.profile_card)
-    GridLayout profileGrid;
+    CardView profileCard;
     private ProfileActivity profileActivity;
     boolean isUserProfile;
+    @BindInt(android.R.integer.config_shortAnimTime)
+    int shortAnimDuration;
 
     public static ProfileFragment newInstance() {
 
@@ -109,7 +111,7 @@ public class ProfileFragment extends Fragment {
             addFriendButton.setVisibility(View.GONE);
         } else {
             // check if friend is already in friend list
-            isInFriendList(dbRef, userId);
+            setupButtons(dbRef, userId);
 
             sendMsgButton.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -119,10 +121,10 @@ public class ProfileFragment extends Fragment {
             });
         }
 
-        getUserData(dbRef, userId);
+        getUserDetails(dbRef, userId);
     }
 
-    private void getUserData(DatabaseReference dbRef, final String userId) {
+    private void getUserDetails(DatabaseReference dbRef, final String userId) {
         DatabaseReference reference = dbRef.child(Constants.USERS).child(userId);
         reference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -144,13 +146,12 @@ public class ProfileFragment extends Fragment {
                         addUserToFriendList(userId, user.getName(), user.getEmail());
                         Toast.makeText(getContext(),
                                 getString(R.string.friend_was_added_toast,
-                                user.getName()),
+                                        user.getName()),
                                 Toast.LENGTH_LONG).show();
                     }
                 });
 
-                profileProgressBar.setVisibility(View.GONE);
-                profileGrid.setVisibility(View.VISIBLE);
+                showProfileCardCrossFadeAnimation();
 
                 if (!isUserProfile) {
                     profileActivity.setupToolBar(dataSnapshot.child(Constants.NAME).getValue(String.class));
@@ -165,7 +166,28 @@ public class ProfileFragment extends Fragment {
 
     }
 
-    private void isInFriendList(DatabaseReference dbRef, final String userId) {
+    private void showProfileCardCrossFadeAnimation() {
+        profileCard.setAlpha(0f);
+        profileCard.setVisibility(View.VISIBLE);
+
+        profileCard.animate()
+                .alpha(1f)
+                .setDuration(shortAnimDuration)
+                .setListener(null);
+
+        profileProgressBar.animate()
+                .alpha(0f)
+                .setDuration(shortAnimDuration)
+                .setListener(new AnimatorListenerAdapter() {
+                    @Override
+                    public void onAnimationEnd(Animator animation) {
+                        profileProgressBar.setVisibility(View.GONE);
+                    }
+                });
+    }
+
+
+    private void setupButtons(DatabaseReference dbRef, final String userId) {
         FirebaseUser user = profileActivity.getAuth().getCurrentUser();
         if (user != null) {
             String firebaseUid = user.getUid();
