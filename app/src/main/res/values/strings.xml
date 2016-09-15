@@ -58,7 +58,7 @@
     <!--Buttons-->
     <string name="send_a_message">SEND A MESSAGE</string>
     <string name="you_are_friends">You are friends</string>
-    <string name="add_friend">Add a Friend</string>
+    <string name="add_friend">Add to Friends</string>
     <string name="sign_in">sign in</string>
     <string name="create_account">create account</string>
 
