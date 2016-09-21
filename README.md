@@ -1,6 +1,12 @@
 # SimpleChatApp
 Android chat application based on Firebase services
 
+<p align="center">
+  <img src="https://github.com/newfobject/SimpleChatApp/blob/master/art/chat.png" width="290"/>
+  <img src="https://github.com/newfobject/SimpleChatApp/blob/master/art/profile.png" width="290"/>
+  <img src="https://github.com/newfobject/SimpleChatApp/blob/master/art/recent.png" width="290"/>
+</p>
+
 #Features
 
 * Messaging 
@@ -22,14 +28,6 @@ Follow [these] (https://firebase.google.com/docs/android/setup#add_firebase_to_y
   <img src="https://github.com/newfobject/SimpleChatApp/blob/master/art/login.gif" width="290"/>
   <img src="https://github.com/newfobject/SimpleChatApp/blob/master/art/chat.gif" width="290"/>
   <img src="https://github.com/newfobject/SimpleChatApp/blob/master/art/list.gif" width="290"/>
-</p>
-
-#Screens
-
-<p align="center">
-  <img src="https://github.com/newfobject/SimpleChatApp/blob/master/art/chat.png" width="290"/>
-  <img src="https://github.com/newfobject/SimpleChatApp/blob/master/art/profile.png" width="290"/>
-  <img src="https://github.com/newfobject/SimpleChatApp/blob/master/art/recent.png" width="290"/>
 </p>
 
 #Firebase Database structure
